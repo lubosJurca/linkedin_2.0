@@ -23,10 +23,10 @@ const Sidebar = () => {
   };
 
   return (
-    <section className="sticky flex-[0.2] text-center   ">
+    <section className="flex-[0.2] sticky sm:top-20 z-40 text-center h-fit  ">
       <div className="border pb-2 border-b-2 bg-white mb-2">
         <img src={bgPicture2} className="h-[3.5rem] w-full object-cover" />
-        <Avatar src={user?.photoUrl} name="Lubos Jurca" round="50%" size="50" className="-mt-3 object-cover" />
+        <Avatar src={user?.photoUrl} name={user?.displayName} round="50%" size="50" className="-mt-3 object-cover" />
         <h2 className="font-bold underline">{user.displayName}</h2>
         <h4 className="text-gray-500 text-sm">{user.email}</h4>
       </div>

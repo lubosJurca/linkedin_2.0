@@ -15,9 +15,14 @@ import InputOption from "./InputOption";
 import { db } from "../../../../firebase";
 import { collection,addDoc, serverTimestamp } from "firebase/firestore";
 
+// redux
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../redux/store/userSlice";
+
 
 const Input = () => {
   const inputRef = useRef()
+  const user = useSelector(selectUser)
   const postsColRef = collection(db,"posts")
 
   const sendPost = async(e) => {
@@ -26,10 +31,10 @@ const Input = () => {
     
 
     addDoc(postsColRef,{
-      name: "Lubos Jurca",
-      description: "Testing",
+      name: user.displayName,
+      description: user.email,
       message: inputRef.current.value ,
-      photoUrl: "",
+      photoUrl: user.photoUrl || "",
       timeStamp: serverTimestamp()
     });
 
@@ -40,10 +45,10 @@ const Input = () => {
 
   return (
     <div className="bg-white p-5 mb-2">
-      <div className="flex bg-white p-2 border rounded-3xl">
+      <div className="flex bg-white p-4 border rounded-3xl">
         <CreateIcon style={{ color: "grey" }} />
         <form className="flex flex-1 ">
-          <input type="text" className="flex-1" ref={inputRef} />
+          <input type="text" className="flex-1 outline-none" ref={inputRef} />
           <button type="submit" className="hidden" onClick={sendPost}>
             Send
           </button>

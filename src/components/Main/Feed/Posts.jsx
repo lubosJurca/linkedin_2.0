@@ -1,3 +1,7 @@
+
+import { forwardRef } from "react";
+
+// MUI
 import { Avatar } from "@mui/material";
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
@@ -5,12 +9,12 @@ import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import InputOption from "./InputOption";
 
-const Posts = ({ name, description, message, photoUrl }) => {
+const Posts = forwardRef(({ name, description, message, photoUrl },ref) => {
     
   return (
-    <section className="bg-white p-4 mb-2 rounded-lg">
+    <li ref={ref} className="bg-white p-4 mb-2 rounded-lg">
       <div id="postHeader" className="flex mb-2  gap-2">
-        <Avatar />
+        <Avatar  src={photoUrl || ""}/>
         <div>
           <h2 className="font-bold text-base">{name}</h2>
           <p className="text-xs text-gray-400">{description}</p>
@@ -39,8 +43,8 @@ const Posts = ({ name, description, message, photoUrl }) => {
             <h4>Send</h4>
         </InputOption>
       </div>
-    </section>
+    </li>
   );
-};
+});
 
 export default Posts;
