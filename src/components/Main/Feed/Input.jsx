@@ -47,7 +47,7 @@ const Input = () => {
     <div className="bg-white p-5 mb-2">
       <div className="flex bg-white p-4 border rounded-3xl">
         <CreateIcon style={{ color: "grey" }} />
-        <form className="flex flex-1 ">
+        <form className="flex flex-1 ml-1 ">
           <input type="text" className="flex-1 outline-none" ref={inputRef} />
           <button type="submit" className="hidden" onClick={sendPost}>
             Send
